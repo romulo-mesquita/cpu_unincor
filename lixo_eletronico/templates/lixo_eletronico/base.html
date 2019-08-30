@@ -1,0 +1,114 @@
+{% load static %}
+{% load materializecss %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.js"></script>
+    <script src="{% static "materialize/js/materialize.js" %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "materialize/css/materialize.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "materialize/css/index.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "materialize/css/font-awesome-4.3.0/css/font-awesome.min.css" %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">    
+    <title>Document</title>
+</head>
+<body>
+    <nav class="green darken-2">
+        <div class="nav-wrapper ">
+          <div>
+          <a href="{% static "lixo_eletronico.apk" %}" class="brand-logo" download><img src="{% static "images/download-for-android.png" %}" style="width: 30%; padding-top: 10px"></a>
+          </div>            
+          
+          <ul class="right hide-on-med-and-down">       
+             <li><a href="{% url 'lixo_eletronico:index' %}">Home</a></li>
+             <li><a href="{% url 'lixo_eletronico:eventos' %}">Eventos</a></li>
+             <li><a href="{% url 'lixo_eletronico:grupo_estudo' %}">Grupo de Estudo</a></li>
+             <li><a href="{% url 'lixo_eletronico:contato' %}">Contato para Coleta</a></li>           
+          </ul>
+        </div>
+    </nav>   
+        <div id="index-banner" class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+          <div class="container valign">
+            <br><br>
+
+            <h1 class="header center white-text text-darken-2 titleFont " style="text-shadow: 2px 0px 0px #388e3c, 
+            -2px 0px 0px #388e3c, 
+            0px 2px 0px #388e3c, 
+            0px -2px 0px #388e3c;">Grupo de Estudos de Sustentabilidade e Tecnologia</h1>        
+            <div class="row center">
+              <a href="#startPosts" class="btn-floating btn-large waves-effect waves-light green darken-2 head-link"><i class="fa fa-angle-double-down"></i></a>
+            </div>        
+
+          </div>
+        </div>
+        <div class="parallax"><img src="static/images/capa2.jpg" alt="Unsplashed background img 2" style="opacity: 0.4;"></div>
+      </div>
+    <div class="container" id="startPosts">
+     
+      <div class="row">
+          {% block conteudo %} Conteúdo {% endblock %}       
+      </div>
+    </div>
+  <footer class="page-footer green darken-2">
+    <div class="container">            
+        <div class="row">
+          <div class="center">
+            <h5 class="white-text">Parcerias</h5>
+            {% for logo in parceria %}
+              <p>{{ logo.nome_parceiro }}</p> 
+              <img src="{{ logo.logo.url }}">                  
+            {% endfor %}
+          </div>                       
+        </div><!--row-->
+    </div><!--conatiner-->
+    <div class="footer-copyright">
+      <div class="container">
+       <p>Copyright © Ciência da Computação - Unincor</p>
+       <br>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript" script-name="alex-brush" src="http://use.edgefonts.net/alex-brush.js"></script>
+  <script type="text/javascript" script-name="carter-one" src="http://use.edgefonts.net/carter-one.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{% static "materialize/js/materialize.js" %}"></script>
+
+  <script>
+        $(document).ready(function(){
+            $('.materialboxed').materialbox();
+            $('.parallax').parallax();
+            $('.button-collapse').sideNav();
+        });
+    </script>
+        <script>
+        $('.head-link').click(function(e) {
+            e.preventDefault();
+
+            var goto = $(this).attr('href');
+
+            $('html, body').animate({
+            scrollTop: $(goto).offset().top
+            }, 800);
+            });
+        </script>
+        <script>
+            (function(i,s,o,g,r,a,m){
+                i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)
+                },
+                i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })
+            (window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-60673008-2', 'auto');
+            ga('send', 'pageview');
+        </script>
+</body>
+</html>  
+

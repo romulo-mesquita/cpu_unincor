@@ -1,0 +1,21 @@
+  <footer class="page-footer green darken-2">
+    <div class="container">            
+            <div class="row">
+              <div class="center">
+                <h5 class="white-text">Parcerias</h5>
+                {% for logo in parceria %}
+                  {{ logo.nome_parceiro }}  
+                  <img src="{{ logo.logo.url }}">                  
+                {% endfor %}
+              </div>                       
+            </div><!--row-->
+          </div><!--conatiner-->
+    <div class="footer-copyright">
+      <div class="container">
+       <p>Copyright © Ciência da Computação - Unincor</p>
+       <br>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>

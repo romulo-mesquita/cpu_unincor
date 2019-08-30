@@ -1,0 +1,46 @@
+{% extends "lixo_eletronico/base.html" %}
+
+{% block conteudo %}     
+      <h3 class="post-title titleFont">
+          Conheça os eventos que já foram realizados!
+       </h3>
+    <div class="row">
+	    {% for acontecimento in realizados %}
+	    {% if acontecimento.get_eventosrealizados %}	
+		    <div class="col s6">
+		      <div class="card">
+		        <div class="card-image">
+		          <div class="slider">
+		            <ul class="slides">
+		            	{% for evento_imagem in acontecimento.get_eventosrealizados %}
+		            		{{ evento_imagem.evento }}
+		            		{% for imagens in evento_imagem.get_imagens %}
+				              <li>
+				                <img src="{{ imagens.imagem.url }}"> 
+				              </li>
+			              	{% endfor %}
+		              	{% endfor %}
+		            </ul>
+		          </div>
+		        </div>
+		        <div class="card-content">
+		          <p>{{ acontecimento.nome_evento }}</p><br>
+		          <p>{{ acontecimento.data_evento }}</p>
+		          <a href="{% url 'lixo_eletronico:detalhe' acontecimento.id %} ">Ver Mais!</a>
+		        </div>
+		      </div>
+		    </div>
+		{% endif %}
+		{% endfor %}
+	</div>
+    
+	<h3 class="post-title titleFont">
+	    Agenda dos proximos eventos
+	</h3>
+   	<ul class="collection">
+   		{% for evento in agendas %}
+      		<li class="collection-item"><i class="material-icons">send</i>  O {{ evento.nome_evento }} acontecera no dia {{ evento.data_evento }}, no seguinte endereço {{ evento.localizacao }}</li>
+   		{% endfor %}   		
+    </ul>
+    <a href="{% url 'lixo_eletronico:agenda_completa' %}">Ver tudo!</a>
+{% endblock %}

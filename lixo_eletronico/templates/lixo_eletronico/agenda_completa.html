@@ -1,0 +1,25 @@
+{% extends "lixo_eletronico/base.html" %}
+
+{% block conteudo %}
+    <div class="col s12 m10 offset-m1 l9 offset-l1"> 
+	    <div class="post-preview">                    
+	        <h3 class="post-title titleFont">
+	           Agenda completa!
+	        </h3>
+	        <div class="row">
+	        	{% for evento in eventos %}
+			    	<div class="col s12 m6">
+				      <div class="card green darken-2 darken-1">
+				        <div class="card-content white-text">
+				          <span class="card-title">{{ evento.nome_evento }}</span>
+				          <p>{{ evento.descricao }} </p><br>
+				          <p>{{ evento.data_evento }} </p>				          
+				          <p>{{ evento.localizacao }} </p>
+				        </div>			        
+				      </div>
+			    	</div>
+		    	{% endfor %}
+		  	</div>                      
+	    </div>
+	</div>    
+{% endblock %}
